@@ -1,0 +1,14 @@
+import * as Prisma from './internal/prismaNamespaceBrowser';
+export { Prisma };
+export * as $Enums from './enums';
+export * from './enums';
+export type User = Prisma.UserModel;
+export type Address = Prisma.AddressModel;
+export type Category = Prisma.CategoryModel;
+export type Product = Prisma.ProductModel;
+export type ProductVariant = Prisma.ProductVariantModel;
+export type Inventory = Prisma.InventoryModel;
+export type Cart = Prisma.CartModel;
+export type CartItem = Prisma.CartItemModel;
+export type Order = Prisma.OrderModel;
+export type OrderItem = Prisma.OrderItemModel;
