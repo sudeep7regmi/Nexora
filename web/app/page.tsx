@@ -1,27 +1,37 @@
 "use client";
-
+import {
+  ArrowRight,
+  Heart,
+  House,
+  ShoppingBag,
+  ShieldCheck,
+  Smartphone,
+  Truck,
+  WalletCards,
+  Watch,
+} from "lucide-react";
 import Link from "next/link";
 
 const categories = [
   {
     name: "Electronics",
     description: "Smart devices & accessories",
-    icon: "⌁",
+    icon: Smartphone,
   },
   {
     name: "Fashion",
     description: "Style for every occasion",
-    icon: "◇",
+    icon: ShoppingBag,
   },
   {
     name: "Home & Living",
     description: "Make your space yours",
-    icon: "⌂",
+    icon: House,
   },
   {
     name: "Accessories",
     description: "The details that matter",
-    icon: "✦",
+    icon: Watch,
   },
 ];
 
@@ -30,16 +40,19 @@ const features = [
     title: "Secure Shopping",
     description:
       "Your information and transactions are protected with modern security practices.",
+    icon: ShieldCheck,
   },
   {
     title: "Fast Delivery",
     description:
       "Get your orders delivered quickly and reliably, wherever you are.",
+    icon: Truck,
   },
   {
     title: "Easy Payments",
     description:
       "Choose from convenient payment options for a smooth checkout experience.",
+    icon: WalletCards,
   },
 ];
 
@@ -78,9 +91,7 @@ export default function Home() {
               N
             </div>
 
-            <span className="text-xl font-bold tracking-tight">
-              Nexora
-            </span>
+            <span className="text-xl font-bold tracking-tight">Nexora</span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -135,9 +146,7 @@ export default function Home() {
 
             <h1 className="max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Everything you need.
-              <span className="block text-slate-400">
-                One place.
-              </span>
+              <span className="block text-slate-400">One place.</span>
             </h1>
 
             <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600">
@@ -217,7 +226,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <span className="text-2xl text-white">→</span>
+                  <ArrowRight className="h-6 w-6 text-white" />
                 </div>
               </div>
             </div>
@@ -242,27 +251,34 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => (
-              <Link
-                href="#shop"
-                key={category.name}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg"
-              >
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-950 text-xl text-white">
-                  {category.icon}
-                </div>
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <Link
+                  href="#shop"
+                  key={category.name}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-lg"
+                >
+                  <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-950 text-white">
+                    <Icon size={22} strokeWidth={1.8} />
+                  </div>
 
-                <h3 className="font-semibold">{category.name}</h3>
+                  <h3 className="font-semibold">{category.name}</h3>
 
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  {category.description}
-                </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-500">
+                    {category.description}
+                  </p>
 
-                <div className="mt-5 text-sm font-medium text-slate-700">
-                  Browse →
-                </div>
-              </Link>
-            ))}
+                  <div className="mt-5 flex items-center gap-1 text-sm font-medium text-slate-700">
+                    Browse
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -282,9 +298,10 @@ export default function Home() {
 
           <Link
             href="#"
-            className="hidden text-sm font-semibold text-slate-700 hover:text-slate-950 sm:block"
+            className="hidden items-center gap-1 text-sm font-semibold text-slate-700 hover:text-slate-950 sm:flex"
           >
-            View all →
+            View all
+            <ArrowRight size={16} />
           </Link>
         </div>
 
@@ -298,8 +315,12 @@ export default function Home() {
                   className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
-                <button className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-lg shadow-sm backdrop-blur transition hover:bg-white">
-                  ♡
+                <button
+                  type="button"
+                  aria-label="Add to wishlist"
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm backdrop-blur transition hover:bg-white hover:text-red-500"
+                >
+                  <Heart size={18} />
                 </button>
               </div>
 
@@ -342,24 +363,27 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className="border-t border-slate-800 pt-6"
-              >
-                <span className="text-sm text-slate-500">
-                  0{index + 1}
-                </span>
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={feature.title}
+                  className="border-t border-slate-800 pt-6"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-slate-200">
+                    <Icon size={20} strokeWidth={1.8} />
+                  </div>
 
-                <h3 className="mt-5 text-xl font-semibold">
-                  {feature.title}
-                </h3>
+                  <h3 className="mt-5 text-xl font-semibold">
+                    {feature.title}
+                  </h3>
 
-                <p className="mt-3 text-sm leading-7 text-slate-400">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+                  <p className="mt-3 text-sm leading-7 text-slate-400">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -372,8 +396,8 @@ export default function Home() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl leading-7 text-slate-600">
-            Create your Nexora account and start exploring products curated
-            for modern shoppers.
+            Create your Nexora account and start exploring products curated for
+            modern shoppers.
           </p>
 
           <Link
