@@ -1,20 +1,20 @@
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { AuthenticatedRequest } from "../auth/interfaces/authenticated-request.interface";
+import { UpdateUserDto } from './dto/update-user.dto';
 export declare class UsersController {
     private readonly usersService;
     constructor(usersService: UsersService);
-    findAll(): Promise<{
+    getMe(req: AuthenticatedRequest): Promise<{
         id: string;
         email: string;
-        passwordHash: string;
         firstName: string;
         lastName: string;
         role: import("../../generated/prisma/enums").UserRole;
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
-    }[]>;
-    create(createUserDto: CreateUserDto): Promise<{
+    }>;
+    updateMe(req: AuthenticatedRequest, dto: UpdateUserDto): Promise<{
         id: string;
         email: string;
         firstName: string;
@@ -22,5 +22,6 @@ export declare class UsersController {
         role: import("../../generated/prisma/enums").UserRole;
         isActive: boolean;
         createdAt: Date;
+        updatedAt: Date;
     }>;
 }
