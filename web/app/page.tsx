@@ -10,6 +10,7 @@ import {
   WalletCards,
   Watch,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
@@ -126,7 +127,7 @@ export default function Home() {
             </Link>
 
             <Link
-              href="/users"
+              href="/register"
               className="rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
             >
               Get started
@@ -137,13 +138,8 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-2 lg:px-8">
+        <div className="mx-auto grid min-h-162.5 max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-2 lg:px-8">
           <div>
-            <div className="mb-6 inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-600">
-              <span className="mr-2 h-2 w-2 rounded-full bg-green-500" />
-              Your modern shopping experience
-            </div>
-
             <h1 className="max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Everything you need.
               <span className="block text-slate-400">One place.</span>
@@ -209,10 +205,12 @@ export default function Home() {
                 </div>
 
                 <div className="overflow-hidden rounded-2xl bg-slate-800">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80"
                     alt="Nexora shopping collection"
-                    className="h-[360px] w-full object-cover"
+                    width={1200}
+                    height={800}
+                    className="h-90 w-full object-cover"
                   />
                 </div>
 
@@ -309,9 +307,11 @@ export default function Home() {
           {products.map((product) => (
             <div key={product.name} className="group">
               <div className="relative overflow-hidden rounded-2xl bg-slate-100">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={320}
+                  height={320}
                   className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
 
@@ -401,7 +401,7 @@ export default function Home() {
           </p>
 
           <Link
-            href="/users"
+            href="/register"
             className="mt-8 inline-flex rounded-xl bg-slate-950 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Create your account
