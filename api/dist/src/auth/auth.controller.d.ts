@@ -25,6 +25,7 @@ export declare class AuthController {
             lastName: string;
             role: import("../../generated/prisma/enums").UserRole;
         };
+        acessToken: string;
     }>;
     getMe(req: AuthRequest): import("./interfaces/auth-user.interface").AuthUser;
     logout(response: Response): {

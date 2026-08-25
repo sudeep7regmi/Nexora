@@ -6,22 +6,22 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     getMe(req: AuthenticatedRequest): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         firstName: string;
         lastName: string;
         role: import("../../generated/prisma/enums").UserRole;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateMe(req: AuthenticatedRequest, dto: UpdateUserDto): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         firstName: string;
         lastName: string;
         role: import("../../generated/prisma/enums").UserRole;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
 }

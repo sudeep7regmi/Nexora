@@ -1,0 +1,87 @@
+import { PrismaService } from "../prisma/prisma.service";
+import { CreateAddressDto } from './dto/create-address.dto';
+import { UpdateAddressDto } from './dto/update-address.dto';
+export declare class AddressesService {
+    private readonly prisma;
+    constructor(prisma: PrismaService);
+    create(userId: string, dto: CreateAddressDto): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    findAll(userId: string): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    findOne(userId: string, addressId: string): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    update(userId: string, addressId: string, dto: UpdateAddressDto): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    remove(userId: string, addressId: string): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+}

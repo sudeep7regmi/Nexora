@@ -1,0 +1,88 @@
+import { AddressesService } from './addresses.service';
+import { AuthenticatedRequest } from "../auth/interfaces/authenticated-request.interface";
+import { CreateAddressDto } from './dto/create-address.dto';
+import { UpdateAddressDto } from './dto/update-address.dto';
+export declare class AddressesController {
+    private readonly addressesService;
+    constructor(addressesService: AddressesService);
+    create(req: AuthenticatedRequest, dto: CreateAddressDto): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    findAll(req: AuthenticatedRequest): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    findOne(id: string, req: AuthenticatedRequest): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    update(id: string, req: AuthenticatedRequest, dto: UpdateAddressDto): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    remove(id: string, req: AuthenticatedRequest): Promise<{
+        id: string;
+        userId: string;
+        label: string;
+        fullName: string;
+        phone: string;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string | null;
+        postalCode: string;
+        country: string;
+        isDefault: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+}

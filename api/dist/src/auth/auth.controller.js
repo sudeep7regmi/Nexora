@@ -37,6 +37,7 @@ let AuthController = class AuthController {
         return {
             message: 'Login Successful',
             user: result.user,
+            acessToken: result.accessToken,
         };
     }
     getMe(req) {
