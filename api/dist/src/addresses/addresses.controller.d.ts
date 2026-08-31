@@ -7,7 +7,8 @@ export declare class AddressesController {
     constructor(addressesService: AddressesService);
     create(req: AuthenticatedRequest, dto: CreateAddressDto): Promise<{
         id: string;
-        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
         label: string;
         fullName: string;
         phone: string;
@@ -18,12 +19,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        createdAt: Date;
-        updatedAt: Date;
+        userId: string;
     }>;
     findAll(req: AuthenticatedRequest): Promise<{
         id: string;
-        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
         label: string;
         fullName: string;
         phone: string;
@@ -34,12 +35,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        createdAt: Date;
-        updatedAt: Date;
+        userId: string;
     }[]>;
     findOne(id: string, req: AuthenticatedRequest): Promise<{
         id: string;
-        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
         label: string;
         fullName: string;
         phone: string;
@@ -50,12 +51,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        createdAt: Date;
-        updatedAt: Date;
+        userId: string;
     }>;
     update(id: string, req: AuthenticatedRequest, dto: UpdateAddressDto): Promise<{
         id: string;
-        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
         label: string;
         fullName: string;
         phone: string;
@@ -66,12 +67,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        createdAt: Date;
-        updatedAt: Date;
+        userId: string;
     }>;
     remove(id: string, req: AuthenticatedRequest): Promise<{
         id: string;
-        userId: string;
+        createdAt: Date;
+        updatedAt: Date;
         label: string;
         fullName: string;
         phone: string;
@@ -82,7 +83,6 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        createdAt: Date;
-        updatedAt: Date;
+        userId: string;
     }>;
 }
