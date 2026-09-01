@@ -1,32 +1,31 @@
 import {
   IsBoolean,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
   MaxLength,
+  Min,
 } from 'class-validator';
 
-export class CreateProductDto {
+export class CreateProductVariantDto {
   @IsUUID()
-  categoryId: string;
+  productId: string;
 
+  @IsString()
   @IsNotEmpty()
+  @MaxLength(100)
+  sku: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(150)
   name: string;
 
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(220)
-  slug: string;
-
-  @IsOptional()
-  @IsString()
-  description?: string;
-
-  @IsOptional()
-  @IsString()
-  @MaxLength(100)
-  brand?: string;
+  @IsNumber()
+  @Min(0)
+  price: number;
 
   @IsOptional()
   @IsBoolean()

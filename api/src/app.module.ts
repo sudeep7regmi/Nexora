@@ -9,6 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { AddressedModule } from './addresses/addresses.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
+import { ProductVariantsModule } from './product-variants/product-variants.module';
+import { InventoryModule } from './inventory/inventory.module';
+import { CartsModule } from './carts/carts.module';
+import { OrdersModule } from './orders/orders.module';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [
@@ -21,6 +26,11 @@ import { ProductsModule } from './products/products.module';
     AddressedModule,
     CategoriesModule,
     ProductsModule,
+    ProductVariantsModule,
+    InventoryModule,
+    CartsModule,
+    OrdersModule,
+    PaymentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

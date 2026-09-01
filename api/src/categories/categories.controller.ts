@@ -14,6 +14,8 @@ import { CategoriesService } from './categories.service';
 import { AuthenticatedRequest } from 'src/auth/interfaces/authenticated-request.interface';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
 
 @Controller('categories')
 @UseGuards(JwtAuthGuard)
@@ -21,6 +23,8 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   async create(
     @Req() req: AuthenticatedRequest,
     @Body() dto: CreateCategoryDto,
@@ -39,6 +43,8 @@ export class CategoriesController {
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   async update(@Param('id') id: string, @Body() dto: UpdateCategoryDto) {
     return this.categoriesService.update(id, dto);
   }
