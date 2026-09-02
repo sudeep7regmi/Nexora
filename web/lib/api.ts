@@ -8,6 +8,7 @@ interface ApiOptions extends RequestInit {
   headers?: HeadersInit;
 }
 
+
 export async function api<T>(
   endpoint: string,
   options: ApiOptions = {}

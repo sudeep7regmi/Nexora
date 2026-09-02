@@ -1,20 +1,17 @@
-'use client';
+"use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from 'react';
+import { createContext, useContext, type ReactNode } from "react";
 
-import { api } from '@/lib/api';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+import { api } from "@/lib/api";
+
 import type {
   AuthMeResponse,
   LoginDto,
   LoginResponse,
   User,
-} from '@/types/auth';
+} from "@/types/auth";
 
 interface AuthContextType {
   user: User | null;
@@ -29,61 +26,90 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-export function AuthProvider({
-  children,
-}: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+const AUTH_QUERY_KEY = ["auth", "me"];
 
-  useEffect(() => {
-    async function initializeAuth() {
+export function AuthProvider({ children }: AuthProviderProps) {
+  const queryClient = useQueryClient();
+
+  /*
+
+* GET /auth/me
+*
+* This replaces:
+*
+* useEffect()
+* useState()
+* setIsLoading()
+  */
+  const { data: user, isLoading } = useQuery({
+    queryKey: AUTH_QUERY_KEY,
+
+    queryFn: async (): Promise<User | null> => {
       try {
-        const authUser =
-          await api<AuthMeResponse>('/auth/me');
+        const authUser = await api<AuthMeResponse>("/auth/me");
 
-        setUser({
+        return {
           id: authUser.userId,
           email: authUser.email,
-          firstName: '',
-          lastName: '',
+          firstName: "",
+          lastName: "",
           role: authUser.role,
-        });
+        };
       } catch {
-        setUser(null);
-      } finally {
-        setIsLoading(false);
+        return null;
       }
-    }
+    },
 
-    void initializeAuth();
-  }, []);
+    retry: false,
+  });
 
-  const login = async (
-    data: LoginDto,
-  ): Promise<void> => {
-    const result = await api<LoginResponse>(
-      '/auth/login',
-      {
-        method: 'POST',
+  /*
+
+* POST /auth/login
+  */
+  const loginMutation = useMutation({
+    mutationFn: (data: LoginDto) =>
+      api<LoginResponse>("/auth/login", {
+        method: "POST",
         body: JSON.stringify(data),
-      },
-    );
+      }),
 
-    setUser(result.user);
-  };
+    onSuccess: (result) => {
+      queryClient.setQueryData(AUTH_QUERY_KEY, result.user);
+    },
+  });
 
-  const logout = async (): Promise<void> => {
-    await api<{ message: string }>('/auth/logout', {
-      method: 'POST',
-    });
+  /*
 
-    setUser(null);
-  };
+* POST /auth/logout
+  */
+  const logoutMutation = useMutation({
+    mutationFn: () =>
+      api<{ message: string }>("/auth/logout", {
+        method: "POST",
+      }),
+
+    onSuccess: () => {
+      queryClient.setQueryData(AUTH_QUERY_KEY, null);
+
+      queryClient.removeQueries({
+        queryKey: AUTH_QUERY_KEY,
+      });
+    },
+  });
+
+  async function login(data: LoginDto): Promise<void> {
+    await loginMutation.mutateAsync(data);
+  }
+
+  async function logout(): Promise<void> {
+    await logoutMutation.mutateAsync();
+  }
 
   return (
     <AuthContext.Provider
       value={{
-        user,
+        user: user ?? null,
         isLoading,
         login,
         logout,
@@ -98,9 +124,7 @@ export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error(
-      'useAuth must be used inside AuthProvider',
-    );
+    throw new Error("useAuth must be used inside AuthProvider");
   }
 
   return context;
