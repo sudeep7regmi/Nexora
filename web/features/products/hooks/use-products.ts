@@ -1,0 +1,12 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { getProducts } from "@/features/products/api/products";
+
+export function useProducts() {
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+  });
+}
