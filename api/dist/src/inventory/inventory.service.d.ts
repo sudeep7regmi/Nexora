@@ -30,9 +30,9 @@ export declare class InventoryService {
     } & {
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     }>;
     findAll(): import("../../generated/prisma/internal/prismaNamespace").PrismaPromise<({
         variant: {
@@ -60,9 +60,9 @@ export declare class InventoryService {
     } & {
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     })[]>;
     findOne(id: string): Promise<{
         variant: {
@@ -90,9 +90,9 @@ export declare class InventoryService {
     } & {
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     }>;
     findByVariant(variantId: string): Promise<{
         variant: {
@@ -120,9 +120,9 @@ export declare class InventoryService {
     } & {
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     }>;
     update(id: string, dto: UpdateInventoryDto): Promise<{
         variant: {
@@ -150,15 +150,15 @@ export declare class InventoryService {
     } & {
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     }>;
     remove(id: string): Promise<{
         id: string;
         updatedAt: Date;
+        variantId: string;
         quantity: number;
         reserved: number;
-        variantId: string;
     }>;
 }

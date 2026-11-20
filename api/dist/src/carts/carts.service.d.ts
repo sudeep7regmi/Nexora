@@ -21,9 +21,9 @@ export declare class CartsService {
                 inventory: {
                     id: string;
                     updatedAt: Date;
+                    variantId: string;
                     quantity: number;
                     reserved: number;
-                    variantId: string;
                 } | null;
             } & {
                 id: string;
@@ -39,8 +39,8 @@ export declare class CartsService {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            quantity: number;
             variantId: string;
+            quantity: number;
             cartId: string;
         })[];
     } & {
@@ -66,9 +66,9 @@ export declare class CartsService {
                 inventory: {
                     id: string;
                     updatedAt: Date;
+                    variantId: string;
                     quantity: number;
                     reserved: number;
-                    variantId: string;
                 } | null;
             } & {
                 id: string;
@@ -84,8 +84,8 @@ export declare class CartsService {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            quantity: number;
             variantId: string;
+            quantity: number;
             cartId: string;
         })[];
     } & {
@@ -110,9 +110,9 @@ export declare class CartsService {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;
@@ -128,8 +128,8 @@ export declare class CartsService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     updateItem(userId: string, variantId: string, dto: UpdateCartItemDto): Promise<{
@@ -148,9 +148,9 @@ export declare class CartsService {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;
@@ -166,16 +166,16 @@ export declare class CartsService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     removeItem(userId: string, variantId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     clearCart(userId: string): Promise<{

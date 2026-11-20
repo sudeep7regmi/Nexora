@@ -9,6 +9,7 @@ export declare class AddressesController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -19,12 +20,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     findAll(req: AuthenticatedRequest): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -35,12 +36,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }[]>;
     findOne(id: string, req: AuthenticatedRequest): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -51,12 +52,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     update(id: string, req: AuthenticatedRequest, dto: UpdateAddressDto): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -67,12 +68,12 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     remove(id: string, req: AuthenticatedRequest): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -83,6 +84,5 @@ export declare class AddressesController {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
 }

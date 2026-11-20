@@ -26,9 +26,9 @@ export declare class CartsController {
                 inventory: {
                     id: string;
                     updatedAt: Date;
+                    variantId: string;
                     quantity: number;
                     reserved: number;
-                    variantId: string;
                 } | null;
             } & {
                 id: string;
@@ -44,8 +44,8 @@ export declare class CartsController {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            quantity: number;
             variantId: string;
+            quantity: number;
             cartId: string;
         })[];
     } & {
@@ -70,9 +70,9 @@ export declare class CartsController {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;
@@ -88,8 +88,8 @@ export declare class CartsController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     updateItem(req: AuthenticatedRequest, variantId: string, dto: UpdateCartItemDto): Promise<{
@@ -108,9 +108,9 @@ export declare class CartsController {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;
@@ -126,16 +126,16 @@ export declare class CartsController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     removeItem(req: AuthenticatedRequest, variantId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        quantity: number;
         variantId: string;
+        quantity: number;
         cartId: string;
     }>;
     clearCart(req: AuthenticatedRequest): Promise<{

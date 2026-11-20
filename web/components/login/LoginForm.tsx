@@ -25,12 +25,15 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      await login({
+      const user = await login({
         email,
         password,
       });
-
-      router.push("/dashboard");
+      if (user.role === "ADMIN") {
+        router.replace("/admin");
+      } else {
+        router.replace("/dashboard");
+      }
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);

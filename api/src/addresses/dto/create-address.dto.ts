@@ -10,22 +10,22 @@ export class CreateAddressDto {
   @IsString()
   @MinLength(2)
   @MaxLength(30)
-  label: string;
+  label!: string;
 
   @IsString()
   @MinLength(2)
   @MaxLength(100)
-  fullName: string;
+  fullName!: string;
 
   @IsString()
   @MinLength(7)
   @MaxLength(20)
-  phone: string;
+  phone!: string;
 
   @IsString()
   @MinLength(3)
   @MaxLength(150)
-  addressLine1: string;
+  addressLine1!: string;
 
   @IsOptional()
   @IsString()
@@ -35,7 +35,7 @@ export class CreateAddressDto {
   @IsString()
   @MinLength(2)
   @MaxLength(50)
-  city: string;
+  city!: string;
 
   @IsOptional()
   @IsString()
@@ -45,7 +45,7 @@ export class CreateAddressDto {
   @IsString()
   @MinLength(3)
   @MaxLength(20)
-  postalCode: string;
+  postalCode!: string;
 
   @IsOptional()
   @IsString()

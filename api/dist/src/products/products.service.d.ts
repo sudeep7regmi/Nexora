@@ -70,9 +70,9 @@ export declare class ProductsService {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;

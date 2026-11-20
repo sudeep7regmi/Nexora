@@ -16,7 +16,7 @@ import type {
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (data: LoginDto) => Promise<void>;
+  login: (data: LoginDto) => Promise<User>;
   logout: () => Promise<void>;
 }
 
@@ -98,8 +98,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     },
   });
 
-  async function login(data: LoginDto): Promise<void> {
-    await loginMutation.mutateAsync(data);
+  async function login(data: LoginDto): Promise<User> {
+    return await loginMutation.mutateAsync(data).then((result) => result.user);
   }
 
   async function logout(): Promise<void> {

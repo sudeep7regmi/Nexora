@@ -8,11 +8,11 @@ export declare class PaymentsService {
         createdAt: Date;
         updatedAt: Date;
         userId: string;
-        discount: import("@prisma/client-runtime-utils").Decimal;
         status: import("../../generated/prisma/enums").OrderStatus;
         paymentStatus: import("../../generated/prisma/enums").PaymentStatus;
         subtotal: import("@prisma/client-runtime-utils").Decimal;
         shippingFee: import("@prisma/client-runtime-utils").Decimal;
+        discount: import("@prisma/client-runtime-utils").Decimal;
         total: import("@prisma/client-runtime-utils").Decimal;
         shippingFullName: string;
         shippingPhone: string;

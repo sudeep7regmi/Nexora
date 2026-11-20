@@ -8,6 +8,7 @@ export declare class AddressesService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -18,12 +19,12 @@ export declare class AddressesService {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     findAll(userId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -34,12 +35,12 @@ export declare class AddressesService {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }[]>;
     findOne(userId: string, addressId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -50,12 +51,12 @@ export declare class AddressesService {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     update(userId: string, addressId: string, dto: UpdateAddressDto): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -66,12 +67,12 @@ export declare class AddressesService {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
     remove(userId: string, addressId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         label: string;
         fullName: string;
         phone: string;
@@ -82,6 +83,5 @@ export declare class AddressesService {
         postalCode: string;
         country: string;
         isDefault: boolean;
-        userId: string;
     }>;
 }

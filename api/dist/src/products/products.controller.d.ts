@@ -49,9 +49,9 @@ export declare class ProductsController {
             inventory: {
                 id: string;
                 updatedAt: Date;
+                variantId: string;
                 quantity: number;
                 reserved: number;
-                variantId: string;
             } | null;
         } & {
             id: string;
